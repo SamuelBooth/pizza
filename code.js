@@ -27,7 +27,7 @@ $(document).ready(
 
             var totalPizza = totalPizzaCost + totalToppingCost;
 
-            var totalCostPerPerson = costPerPerson / totalPizza;
+            var totalCostPerPerson = (totalPizza) / costPerPerson  ;
 
 
 
