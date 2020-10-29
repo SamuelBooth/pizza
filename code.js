@@ -1,51 +1,50 @@
-function calculatePizzaCost() {
-    //How many Pizzas are you ordering?
-    var amountOfPizzas = prompt("How many Pizzas are you ordering?");
-
-    //convert to a number
-    var amountOfPizzas = parseInt(amountOfPizzas);
-
-    //How many toppings do you have?
-    var amountOfToppings = prompt("How many toppings do you want?");
-
-    //convert to a number
-    var amountOfToppings = parseInt(amountOfToppings);
-
-    //
-    var numberOfPeopleSharingPrice = prompt("How many people will Split the cost of the pizza?")
-
-    var numberOfPeopleSharingPrice =parseInt(numberOfPeopleSharingPrice);
 
 
-
-    var costPerPizza = 15.00;
-
-
-
-
-    var costOfToppings = 1.25;
+$(document).ready(
+    function () {
+        $("#pizzaButton").click(calcPizza);
+        $("#priceButton").click(showPopup);
 
 
+        function calcPizza()
+        {
+            var numberOfPizzas = $("#numberOfPizzas").val();
+            numberOfPizzas = parseFloat(numberOfPizzas);
 
+            var amountOfToppings = $("#amountOfToppings").val();
+            amountOfToppings = parseFloat(amountOfToppings);
 
+            var costPerPerson = $("#numberOfPeopleSharing").val();
+            costPerPerson = parseInt(costPerPerson);
 
-    //find total gallons by dividing miles by MPG
-    var totalPizzaCost = amountOfPizzas * costPerPizza + amountOfToppings * costOfToppings ;
+            var costPerPizza = 15.00;
 
-    // find total gas cost by total gallons * $/gallon
-    var totalCostPerPerson = totalPizzaCost / numberOfPeopleSharingPrice;
+            var costOfToppings = 1.25;
 
-    // show user total pizza cost
-    var totalPizzaFeeDisplay = totalPizzaCost;
+            var totalPizzaCost = costPerPizza * numberOfPizzas  ;
 
-    var totalCostPerPersonDisplay = totalCostPerPerson;
+            var totalToppingCost = costOfToppings * amountOfToppings;
+
+            var totalPizza = totalPizzaCost + totalToppingCost;
+
+            var totalCostPerPerson = costPerPerson / totalPizza;
 
 
 
+            $("#priceOutput").text(totalPizza.toFixed(1));
 
-    // output total fee cost
+            $("#costOutput").text(totalCostPerPerson.toFixed(2));
 
-    alert(`Your total for the pizza is $${totalPizzaFeeDisplay.toFixed(2)} and costs $${totalCostPerPersonDisplay.toFixed(2)} per person equally`);
+            $(".output").show();
+        }
+        function showPopup()
+        {
+            alert(`Your total for the pizza is $${totalPizzaDisplay.toFixed(2)} and costs $${totalCostPerPersonDisplay.toFixed(2)} per person equally`);
+        }
 
 
-}
+
+
+    }
+);
+
